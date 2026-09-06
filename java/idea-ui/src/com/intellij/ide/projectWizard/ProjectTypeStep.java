@@ -18,7 +18,6 @@ import com.intellij.ide.util.newProjectWizard.WizardDelegate;
 import com.intellij.ide.util.newProjectWizard.impl.FrameworkSupportModelBase;
 import com.intellij.ide.util.projectWizard.ModuleBuilder;
 import com.intellij.ide.util.projectWizard.ModuleWizardStep;
-import com.intellij.ide.util.projectWizard.PromoModuleBuilder;
 import com.intellij.ide.util.projectWizard.SettingsStep;
 import com.intellij.ide.util.projectWizard.WizardContext;
 import com.intellij.ide.wizard.CommitStepException;
@@ -652,13 +651,11 @@ public final class ProjectTypeStep extends ModuleWizardStep implements SettingsS
       step.updateStep();
 
       JComponent component = step.getComponent();
-      if (!(builder instanceof PromoModuleBuilder)) {
-        if (component instanceof DialogPanel dialogPanel) {
-          dialogPanel.withPreferredWidth(Math.max(400, component.getMinimumSize().width));
-        }
-        component = new JBScrollPane(component);
-        component.setBorder(JBUI.Borders.empty());
+      if (component instanceof DialogPanel dialogPanel) {
+        dialogPanel.withPreferredWidth(Math.max(400, component.getMinimumSize().width));
       }
+      component = new JBScrollPane(component);
+      component.setBorder(JBUI.Borders.empty());
 
       myOptionsPanel.add(component, card);
 

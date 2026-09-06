@@ -325,7 +325,6 @@ a:com.intellij.ide.util.projectWizard.ProjectTemplateParameterFactory
 - a:detectParameterValue(com.intellij.openapi.project.Project):java.lang.String
 - getImmediateValue():java.lang.String
 - a:getParameterId():java.lang.String
-com.intellij.ide.util.projectWizard.PromoModuleBuilder
 f:com.intellij.ide.util.projectWizard.Session
 - sf:Companion:com.intellij.ide.util.projectWizard.Session$Companion
 - sf:createRandomId():com.intellij.ide.util.projectWizard.Session

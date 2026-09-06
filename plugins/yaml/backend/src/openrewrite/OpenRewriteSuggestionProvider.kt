@@ -5,18 +5,14 @@ import com.intellij.ide.IdeBundle
 import com.intellij.ide.plugins.PluginManager
 import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.ide.util.PropertiesComponent
-import com.intellij.openapi.application.impl.ApplicationInfoImpl
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.fileEditor.FileEditor
 import com.intellij.openapi.fileTypes.FileTypeManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.FUSEventSource
-import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.PluginAdvertiserService
 import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.PluginSuggestion
 import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.PluginSuggestionProvider
-import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.createTryUltimateActionLabel
 import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.installAndEnable
-import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.tryUltimateIsDisabled
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiFile
 import com.intellij.psi.PsiManager
@@ -36,48 +32,35 @@ internal class OpenRewriteSuggestionProvider : PluginSuggestionProvider {
   override fun getSuggestion(project: Project, file: VirtualFile): PluginSuggestion? {
     if (!FileTypeManager.getInstance().isFileOfType(file, YAMLFileType.YML)) return null
 
-    if (isPluginSuggestionDismissed() || tryUltimateIsDisabled()) return null
+    if (isPluginSuggestionDismissed()) return null
 
     val requiredPluginId = PluginId.getId(OPENREWRITE_PLUGIN_ID)
     if (PluginManager.isPluginInstalled(requiredPluginId)) return null
 
     if (!PluginManagerCore.isPluginInstalled(PluginManagerCore.JAVA_PLUGIN_ID)) return null
 
-    val thisProductCode = ApplicationInfoImpl.getShadowInstanceImpl().build.productCode
-
     val isOpenRewriteFile = detectOpenRewriteRecipe(project, file)
     if (!isOpenRewriteFile) return null
 
-    return OpenRewritePluginSuggestion(project, thisProductCode)
+    return OpenRewritePluginSuggestion(project)
   }
 }
 
-private class OpenRewritePluginSuggestion(val project: Project,
-                                          val thisProductCode: String) : PluginSuggestion {
+private class OpenRewritePluginSuggestion(val project: Project) : PluginSuggestion {
   override val pluginIds: List<String> = listOf(OPENREWRITE_PLUGIN_ID)
 
   override fun apply(fileEditor: FileEditor): EditorNotificationPanel {
-    val status = if (PluginAdvertiserService.isCommunityIde()) EditorNotificationPanel.Status.Promo else EditorNotificationPanel.Status.Info
-    val panel = EditorNotificationPanel(fileEditor, status)
+    val panel = EditorNotificationPanel(fileEditor, EditorNotificationPanel.Status.Info)
 
-    val suggestedIdeCode = PluginAdvertiserService.getSuggestedCommercialIdeCode(thisProductCode)
-    val suggestedCommercialIde = PluginAdvertiserService.getIde(suggestedIdeCode)
+    panel.text = IdeBundle.message("plugins.advertiser.plugins.found", 1, OPENREWRITE_FILES)
 
-    if (suggestedCommercialIde == null) {
-      panel.text = IdeBundle.message("plugins.advertiser.plugins.found", 1, OPENREWRITE_FILES)
+    panel.createActionLabel(IdeBundle.message("plugins.advertiser.action.install.plugin.name", OPENREWRITE_PLUGIN_NAME)) {
+      val pluginIds = listOf(OPENREWRITE_PLUGIN_ID)
 
-      panel.createActionLabel(IdeBundle.message("plugins.advertiser.action.install.plugin.name", OPENREWRITE_PLUGIN_NAME)) {
-        val pluginIds = listOf(OPENREWRITE_PLUGIN_ID)
-
-        FUSEventSource.EDITOR.logInstallPlugins(pluginIds, project)
-        installAndEnable(project, pluginIds.map(PluginId::getId).toSet(), true) {
-          EditorNotifications.getInstance(project).updateAllNotifications()
-        }
+      FUSEventSource.EDITOR.logInstallPlugins(pluginIds, project)
+      installAndEnable(project, pluginIds.map(PluginId::getId).toSet(), true) {
+        EditorNotifications.getInstance(project).updateAllNotifications()
       }
-    }
-    else {
-      panel.text = IdeBundle.message("plugins.advertiser.extensions.supported.in.ultimate", OPENREWRITE_FILES, suggestedCommercialIde.name)
-      panel.createTryUltimateActionLabel(suggestedCommercialIde, project, PluginId.getId(OPENREWRITE_PLUGIN_ID))
     }
 
     panel.createActionLabel(IdeBundle.message("plugins.advertiser.action.ignore.ultimate")) {

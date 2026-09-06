@@ -2,9 +2,7 @@
 package com.intellij.platform.searchEverywhere.frontend.providers.actions
 
 import com.intellij.ide.actions.ApplyIntentionAction
-import com.intellij.ide.actions.searcheverywhere.PromoAction
 import com.intellij.ide.ui.UISettings
-import com.intellij.ide.ui.icons.rpcId
 import com.intellij.ide.ui.icons.rpcIdOrNull
 import com.intellij.ide.ui.search.BooleanOptionDescription
 import com.intellij.ide.ui.search.OptionDescription
@@ -29,7 +27,6 @@ import com.intellij.platform.searchEverywhere.presentations.SeActionItemPresenta
 import com.intellij.platform.searchEverywhere.presentations.SeItemPresentation
 import com.intellij.platform.searchEverywhere.presentations.SeOptionActionItemPresentation
 import com.intellij.platform.searchEverywhere.presentations.SeRunnableActionItemPresentation
-import com.intellij.platform.searchEverywhere.presentations.SeRunnableActionItemPresentation.Promo
 import com.intellij.platform.searchEverywhere.providers.SeLog
 import com.intellij.platform.searchEverywhere.providers.SeLog.ITEM_EMIT
 import com.intellij.util.text.nullize
@@ -71,13 +68,6 @@ object SeActionPresentationProvider {
         presentation = presentation.run {
           copy(iconId = actionPresentation.icon?.rpcIdOrNull(),
                selectedIconId = actionPresentation.selectedIcon?.rpcIdOrNull())
-        }
-      }
-
-      if (anAction is PromoAction) {
-        presentation = presentation.run {
-          copy(promo = Promo(productIconId = anAction.promotedProductIcon?.rpcId(),
-                             callToActionText = anAction.callToAction))
         }
       }
 

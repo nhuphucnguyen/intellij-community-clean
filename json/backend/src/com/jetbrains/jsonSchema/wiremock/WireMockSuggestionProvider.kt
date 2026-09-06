@@ -9,18 +9,14 @@ import com.intellij.json.JsonFileType
 import com.intellij.json.psi.JsonArray
 import com.intellij.json.psi.JsonFile
 import com.intellij.json.psi.JsonObject
-import com.intellij.openapi.application.impl.ApplicationInfoImpl
 import com.intellij.openapi.extensions.PluginId
 import com.intellij.openapi.fileEditor.FileEditor
 import com.intellij.openapi.fileTypes.FileTypeManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.FUSEventSource
-import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.PluginAdvertiserService
 import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.PluginSuggestion
 import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.PluginSuggestionProvider
-import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.createTryUltimateActionLabel
 import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.installAndEnable
-import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.tryUltimateIsDisabled
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiFile
@@ -37,46 +33,33 @@ internal class WireMockSuggestionProvider : PluginSuggestionProvider {
   override fun getSuggestion(project: Project, file: VirtualFile): PluginSuggestion? {
     if (!FileTypeManager.getInstance().isFileOfType(file, JsonFileType.INSTANCE)) return null
 
-    if (isPluginSuggestionDismissed() || tryUltimateIsDisabled()) return null
+    if (isPluginSuggestionDismissed()) return null
 
     val requiredPluginId = PluginId.getId(WIREMOCK_PLUGIN_ID)
     if (PluginManager.isPluginInstalled(requiredPluginId)) return null
 
-    val thisProductCode = ApplicationInfoImpl.getShadowInstanceImpl().build.productCode
-
     val isWireMockFile = detectWireMockStubs(project, file)
     if (!isWireMockFile) return null
 
-    return WireMockPluginSuggestion(project, thisProductCode)
+    return WireMockPluginSuggestion(project)
   }
 }
 
-private class WireMockPluginSuggestion(val project: Project,
-                                       val thisProductCode: String) : PluginSuggestion {
+private class WireMockPluginSuggestion(val project: Project) : PluginSuggestion {
   override val pluginIds: List<String> = listOf(WIREMOCK_PLUGIN_ID)
 
   override fun apply(fileEditor: FileEditor): EditorNotificationPanel {
-    val status = if (PluginAdvertiserService.isCommunityIde()) Status.Promo else Status.Info
-    val panel = EditorNotificationPanel(fileEditor, status)
+    val panel = EditorNotificationPanel(fileEditor, Status.Info)
 
-    val suggestedIdeCode = PluginAdvertiserService.getSuggestedCommercialIdeCode(thisProductCode)
-    val suggestedCommercialIde = PluginAdvertiserService.getIde(suggestedIdeCode)
+    panel.text = IdeBundle.message("plugins.advertiser.plugins.found", 1, WIREMOCK_FILES)
 
-    if (suggestedCommercialIde == null) {
-      panel.text = IdeBundle.message("plugins.advertiser.plugins.found", 1, WIREMOCK_FILES)
+    panel.createActionLabel(IdeBundle.message("plugins.advertiser.action.install.plugin.name", WIREMOCK_PLUGIN_NAME)) {
+      val pluginIds = listOf(WIREMOCK_PLUGIN_ID)
 
-      panel.createActionLabel(IdeBundle.message("plugins.advertiser.action.install.plugin.name", WIREMOCK_PLUGIN_NAME)) {
-        val pluginIds = listOf(WIREMOCK_PLUGIN_ID)
-
-        FUSEventSource.EDITOR.logInstallPlugins(pluginIds, project)
-        installAndEnable(project, pluginIds.map(PluginId::getId).toSet(), true) {
-          EditorNotifications.getInstance(project).updateAllNotifications()
-        }
+      FUSEventSource.EDITOR.logInstallPlugins(pluginIds, project)
+      installAndEnable(project, pluginIds.map(PluginId::getId).toSet(), true) {
+        EditorNotifications.getInstance(project).updateAllNotifications()
       }
-    }
-    else {
-      panel.text = IdeBundle.message("plugins.advertiser.extensions.supported.in.ultimate", WIREMOCK_FILES, suggestedCommercialIde.name)
-      panel.createTryUltimateActionLabel(suggestedCommercialIde, project, PluginId.getId(WIREMOCK_PLUGIN_ID))
     }
 
     panel.createActionLabel(IdeBundle.message("plugins.advertiser.action.ignore.ultimate")) {

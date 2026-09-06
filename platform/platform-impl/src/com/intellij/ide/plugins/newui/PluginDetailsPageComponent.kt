@@ -153,7 +153,6 @@ class PluginDetailsPageComponent @JvmOverloads constructor(
   private var nameAndButtons: BaselinePanel? = null
   private var restartButton: JButton? = null
   private var installButton: PluginInstallButton? = null
-  private val mySuggestedIdeBanner = SuggestedIdeBanner()
   private var updateButton: JButton? = null
   private var gearButton: JComponent? = null
   private var myEnableDisableButton: JButton? = null
@@ -370,7 +369,6 @@ class PluginDetailsPageComponent @JvmOverloads constructor(
     homePage = LinkPanel(linkPanel, false)
 
     topPanel.add(nameAndButtons)
-    topPanel.add(mySuggestedIdeBanner, VerticalLayout.FILL_HORIZONTAL)
 
     suggestedFeatures = SuggestedComponent()
     topPanel.add(suggestedFeatures, VerticalLayout.FILL_HORIZONTAL)
@@ -1048,7 +1046,6 @@ class PluginDetailsPageComponent @JvmOverloads constructor(
       }
     }
 
-    mySuggestedIdeBanner.suggestIde(suggestedCommercialIde, plugin!!.pluginId)
     if (!this@PluginDetailsPageComponent.pluginModel.isPluginInstallingOrUpdating(pluginUiModel)) {
       applyCustomization()
     }

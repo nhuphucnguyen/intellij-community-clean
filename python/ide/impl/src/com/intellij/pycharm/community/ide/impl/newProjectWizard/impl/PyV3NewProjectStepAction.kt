@@ -11,8 +11,6 @@ import com.intellij.pycharm.community.ide.impl.PyCharmCommunityCustomizationBund
 import com.intellij.pycharm.community.ide.impl.newProjectWizard.impl.emptyProject.PyV3EmptyProjectGenerator
 import com.jetbrains.python.newProjectWizard.PyV3BaseProjectSettings
 import com.jetbrains.python.newProjectWizard.PyV3ProjectBaseGenerator
-import com.jetbrains.python.newProjectWizard.promotion.PromoProjectGenerator
-import com.jetbrains.python.newProjectWizard.promotion.PromoStep
 
 internal class PyV3NewProjectStepAction : AbstractNewProjectStep<PyV3BaseProjectSettings>(PyV3Customization) {
 
@@ -26,8 +24,6 @@ internal class PyV3NewProjectStepAction : AbstractNewProjectStep<PyV3BaseProject
       when (projectGenerator) {
         // Python projects with project path, python SDK and other settings
         is PyV3ProjectBaseGenerator<*> -> PyV3ProjectSpecificStep(projectGenerator, callback)
-        // No "create" button, no any other setting: just promotion
-        is PromoProjectGenerator -> PromoStep(projectGenerator)
         // Some other generator like node
         else -> ProjectSettingsStepBase(projectGenerator, callback)
       }
@@ -39,7 +35,7 @@ internal class PyV3NewProjectStepAction : AbstractNewProjectStep<PyV3BaseProject
       // Show non python actions as a collapsed group
       val actions = super.getActions(generators, callback)
       val (pythonActions, nonPythonActions) = actions
-        .partition { it is PyV3ProjectSpecificStep || it is PromoStep && it.generator.isPython }
+        .partition { it is PyV3ProjectSpecificStep }
       return arrayOf<AnAction>(
         DefaultActionGroup(PyCharmCommunityCustomizationBundle.message("new.project.python.group.name"), pythonActions),
         CollapsedActionGroup(PyCharmCommunityCustomizationBundle.message("new.project.other.group.name"), nonPythonActions)

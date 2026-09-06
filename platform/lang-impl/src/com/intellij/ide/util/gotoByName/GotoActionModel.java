@@ -10,7 +10,6 @@ import com.intellij.ide.IdeBundle;
 import com.intellij.ide.actions.ApplyIntentionAction;
 import com.intellij.ide.actions.ShowSettingsUtilImpl;
 import com.intellij.ide.actions.searcheverywhere.MergeableElement;
-import com.intellij.ide.actions.searcheverywhere.PromoAction;
 import com.intellij.ide.ui.RegistryTextOptionDescriptor;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.search.BooleanOptionDescription;
@@ -46,7 +45,6 @@ import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.FeaturePromoBundle;
 import com.intellij.openapi.util.Comparing;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.NlsActions.ActionText;
@@ -777,10 +775,6 @@ public final class GotoActionModel implements ChooseByNameModel, Comparator<Obje
           panel.setRight(groupLabel);
         }
 
-        if (anAction instanceof PromoAction promoAction) {
-          customizePromoAction(promoAction, bg, eastBorder, groupFg, panel);
-        }
-
         panel.setToolTipText(presentation.getDescription());
         @NlsSafe String actionId = ActionManager.getInstance().getId(anAction);
         Shortcut[] shortcuts = KeymapUtil.getActiveKeymapShortcuts(actionId).getShortcuts();
@@ -826,39 +820,6 @@ public final class GotoActionModel implements ChooseByNameModel, Comparator<Obje
         appendWithColoredMatches(nameComponent, name, pattern, fg, isSelected);
       }
       return panel;
-    }
-
-    private static void customizePromoAction(PromoAction promoAction,
-                                             Color panelBackground,
-                                             Border eastBorder,
-                                             Color groupFg,
-                                             IconCompOptionalCompPanel<SimpleColoredComponent> panel) {
-      SimpleColoredComponent promo = new SimpleColoredComponent();
-      promo.setBackground(panelBackground);
-      promo.setForeground(groupFg);
-      promo.setIcon(AllIcons.Ide.External_link_arrow);
-      promo.setIconOnTheRight(true);
-      promo.setTransparentIconBackground(true);
-      promo.append(promoAction.getCallToAction());
-
-      SimpleColoredComponent upgradeTo = new SimpleColoredComponent();
-      upgradeTo.setIcon(promoAction.getPromotedProductIcon());
-      upgradeTo.setBackground(panelBackground);
-      upgradeTo.setForeground(groupFg);
-      upgradeTo.setIconOnTheRight(true);
-      upgradeTo.append(FeaturePromoBundle.message("get.prefix") + " ");
-      upgradeTo.setTransparentIconBackground(true);
-
-      BorderLayoutPanel compositeUpgradeHint = JBUI.Panels.simplePanel(promo);
-      if (promoAction.getPromotedProductIcon() != null) {
-        compositeUpgradeHint.addToLeft(upgradeTo);
-      }
-
-      compositeUpgradeHint.andTransparent();
-
-      compositeUpgradeHint.setBorder(eastBorder);
-
-      panel.setRight(compositeUpgradeHint);
     }
 
     public static @ActionText @NotNull String calcHit(@NotNull OptionDescription value) {

@@ -1,80 +1,30 @@
 // Copyright 2000-2023 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license.
 package com.intellij.ide.plugins.advertiser
 
-import com.intellij.ide.plugins.marketplace.MarketplaceRequests
-import com.intellij.ide.util.PropertiesComponent
 import com.intellij.openapi.fileTypes.FileType
 import com.intellij.openapi.fileTypes.PlainTextFileType
 import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.PluginAdvertiserExtensionsStateService
 import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.getSuggestionData
-import com.intellij.testFramework.PlatformTestUtil
 import com.intellij.testFramework.ProjectRule
 import kotlinx.coroutines.runBlocking
-import org.junit.BeforeClass
 import org.junit.ClassRule
 import org.junit.Test
-import java.io.File
 import javax.swing.Icon
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
+import kotlin.test.assertNull
 
 class PluginsAdvertiserTest {
   companion object {
     @JvmField
     @ClassRule
     val projectRule = ProjectRule(preloadServices = true)
-
-    @BeforeClass
-    @JvmStatic
-    fun loadExtensions() {
-      val path = PlatformTestUtil.getPlatformTestDataPath() + "plugins/pluginAdvertiser/extensions.json"
-      File(path).inputStream().use {
-        MarketplaceRequests.getInstance().deserializeExtensionsForIdes(it)
-      }
-    }
-  }
-
-  @Test
-  fun suggestedIde() = runBlocking {
-    preparePluginCache("*.js" to PluginData("JavaScript"))
-    val suggestion = getSuggestionData(project = projectRule.project,
-                                       activeProductCode = "IC",
-                                       fileName = "foo.js",
-                                       fileType = PlainTextFileType.INSTANCE)
-    assertEquals(listOf("IntelliJ IDEA"), suggestion!!.suggestedIdes.map { it.name })
-  }
-
-  @Test
-  fun suggestedIdeDismissed() = runBlocking {
-    preparePluginCache("*.js" to PluginData("JavaScript", isBundled = true))
-    PropertiesComponent.getInstance().setValue("promo.ignore.suggested.ide", true)
-    try {
-      val suggestion = getSuggestionData(projectRule.project, "IC", "foo.js", PlainTextFileType.INSTANCE)
-      assertEquals(0, suggestion!!.suggestedIdes.size)
-    }
-    finally {
-      PropertiesComponent.getInstance().setValue("promo.ignore.suggested.ide", false)
-    }
-  }
-
-  @Test
-  fun suggestedIdeInPyCharmCommunity() = runBlocking {
-    preparePluginCache("*.js" to PluginData("JavaScript"))
-    val suggestion = getSuggestionData(projectRule.project, "PC", "foo.js", PlainTextFileType.INSTANCE)
-    assertEquals(listOf("PyCharm Pro"), suggestion!!.suggestedIdes.map { it.name })
-  }
-
-  @Test
-  fun noSuggestionForNonPlainTextFile() = runBlocking {
-    preparePluginCache("*.xml" to null)
-    val suggestion = getSuggestionData(projectRule.project, "IU", "foo.xml", SupportedFileType())
-    assertEquals(0, suggestion!!.suggestedIdes.size)
   }
 
   @Test
   fun suggestionForNonPlainTextFile() = runBlocking {
     preparePluginCache("build.xml" to PluginData("Ant"))
-    val suggestion = getSuggestionData(projectRule.project, "IU", "build.xml", SupportedFileType())
+    val suggestion = getSuggestionData(projectRule.project, "build.xml", SupportedFileType())
 
     assertNotNull(suggestion)
     assertEquals(listOf("Ant"), suggestion.thirdParty.map { it.pluginIdString })
@@ -83,21 +33,14 @@ class PluginsAdvertiserTest {
   @Test
   fun noSuggestionForUnknownExtension() = runBlocking {
     preparePluginCache("*.jaba" to null)
-    val suggestion = getSuggestionData(projectRule.project, "IC", "foo.jaba", PlainTextFileType.INSTANCE)
-    assertEquals(0, suggestion!!.suggestedIdes.size)
-  }
-
-  @Test
-  fun suggestCLionInIU() = runBlocking {
-    preparePluginCache("*.cpp" to null)
-    val suggestion = getSuggestionData(projectRule.project, "IU", "foo.cpp", PlainTextFileType.INSTANCE)
-    assertEquals("CLion", suggestion!!.suggestedIdes.single().name)
+    val suggestion = getSuggestionData(projectRule.project, "foo.jaba", PlainTextFileType.INSTANCE)
+    assertNull(suggestion)
   }
 
   @Test
   fun suggestPluginByExtension() = runBlocking {
     preparePluginCache("*.lua" to PluginData("Lua"))
-    val suggestion = getSuggestionData(projectRule.project, "IU", "foo.lua", PlainTextFileType.INSTANCE)
+    val suggestion = getSuggestionData(projectRule.project, "foo.lua", PlainTextFileType.INSTANCE)
 
     assertNotNull(suggestion)
     assertEquals(listOf("Lua"), suggestion.thirdParty.map { it.pluginIdString })

@@ -1,11 +1,9 @@
 // Copyright 2000-2025 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license.
 package com.intellij.platform.searchEverywhere.frontend.tabs.actions
 
-import com.intellij.icons.AllIcons
 import com.intellij.ide.ui.UISettings
 import com.intellij.ide.ui.icons.icon
 import com.intellij.ide.util.gotoByName.GotoActionModel
-import com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.FeaturePromoBundle.message
 import com.intellij.openapi.util.NlsActions
 import com.intellij.openapi.util.NlsSafe
 import com.intellij.openapi.util.TextRange
@@ -25,7 +23,6 @@ import com.intellij.ui.SimpleColoredComponent
 import com.intellij.ui.SimpleTextAttributes
 import com.intellij.ui.dsl.listCellRenderer.LcrInitParams
 import com.intellij.ui.dsl.listCellRenderer.listCellRenderer
-import com.intellij.ui.render.IconCompOptionalCompPanel
 import com.intellij.ui.speedSearch.SpeedSearchUtil
 import com.intellij.util.ui.EmptyIcon
 import com.intellij.util.ui.JBUI
@@ -75,10 +72,6 @@ class SeActionItemPresentationRenderer(private val resultsList: JList<SeResultLi
             ?: presentation.iconId?.icon()
             ?: EMPTY_ICON
           icon(GotoActionModel.createLayeredIcon(icon, disabled))
-        }
-
-        presentation.promo?.let { promo ->
-          //TODO: customizePromoAction(anAction, bg, eastBorder, groupForeground, panel)
         }
 
         toolTipText = presentation.toolTip
@@ -169,42 +162,6 @@ class SeActionItemPresentationRenderer(private val resultsList: JList<SeResultLi
 
   private val EMPTY_ICON: Icon = EmptyIcon.ICON_16
   private val TOGGLE_BUTTON_BORDER: Border = JBUI.Borders.empty(0, 2)
-
-  private fun customizePromoAction(
-    promoAction: SeRunnableActionItemPresentation.Promo,
-    panelBackground: Color,
-    eastBorder: Border,
-    groupFg: Color,
-    panel: IconCompOptionalCompPanel<SimpleColoredComponent>,
-  ) {
-    val promo = SimpleColoredComponent()
-    promo.background = panelBackground
-    promo.foreground = groupFg
-    promo.setIcon(AllIcons.Ide.External_link_arrow)
-    promo.isIconOnTheRight = true
-    promo.isTransparentIconBackground = true
-    promo.append(promoAction.callToActionText)
-
-    val upgradeTo = SimpleColoredComponent()
-    val icon = promoAction.productIconId?.icon()
-    upgradeTo.setIcon(icon)
-    upgradeTo.background = panelBackground
-    upgradeTo.foreground = groupFg
-    upgradeTo.isIconOnTheRight = true
-    upgradeTo.append(message("get.prefix") + " ")
-    upgradeTo.isTransparentIconBackground = true
-
-    val compositeUpgradeHint = JBUI.Panels.simplePanel(promo)
-    if (icon != null) {
-      compositeUpgradeHint.addToLeft(upgradeTo)
-    }
-
-    compositeUpgradeHint.andTransparent()
-
-    compositeUpgradeHint.border = eastBorder
-
-    panel.right = compositeUpgradeHint
-  }
 
   private fun cutName(
     name: @NlsActions.ActionText String,
