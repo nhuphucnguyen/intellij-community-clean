@@ -85,8 +85,6 @@
     <orderEntry type="module" module-name="intellij.gradle.completion.toml.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.groovy.uast.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.remoteServers.targetsIntegrationTests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.commonTests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.sdk.backend" scope="TEST" />
     <orderEntry type="module" module-name="intellij.restructuredtext" scope="TEST" />
     <orderEntry type="module" module-name="intellij.markdown.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.mermaid" scope="TEST" />
@@ -113,12 +111,9 @@
     <orderEntry type="module" module-name="intellij.remoteDev.util" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.inspect" scope="TEST" />
     <orderEntry type="module" module-name="intellij.community.wintools" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.community.execService" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.pyproject" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.indexing.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.testFramework.monorepo" scope="TEST" />
     <orderEntry type="module" module-name="intellij.textmate.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.processOutput.frontend" scope="TEST" />
     <orderEntry type="module" module-name="intellij.tools.ide.starter.junit5" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.buildScripts.productDsl" scope="TEST" />
     <orderEntry type="module" module-name="intellij.terminal.tests" scope="TEST" />
@@ -129,19 +124,6 @@
     <orderEntry type="module" module-name="intellij.platform.images.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.regexp.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.debugger.impl.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.venv.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.community.services.systemPython.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.pyproject.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.requirements.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.pytools.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.mcp.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.community.services.internal.impl.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.test.env.common" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.test.env.conda" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.test.env.core" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.test.env.junit4" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.test.env.plain" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.test.env.uv" scope="TEST" />
     <orderEntry type="module" module-name="intellij.maven.server.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.completion.common.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.settings.local.tests" scope="TEST" />
@@ -274,10 +256,6 @@
     <orderEntry type="module" module-name="intellij.platform.vcs.core.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.vcs.dvcs.impl.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.whatsNew.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.community.execService.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.community.services.shared.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.processOutput.frontend.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.python.sdk.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.remoteControl.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.remoteDev.util.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.searchEverywhere.backend.tests" scope="TEST" />
