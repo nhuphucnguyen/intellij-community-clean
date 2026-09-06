@@ -199,7 +199,6 @@ jvm_library(
         "//plugins/markdown/plugin:plugin-main",
         "//plugins/webp",
         "//plugins/emojipicker",
-        "//plugins/gradle/gradle-dependency-updater:dependencyUpdater",
         "//platform/settings-sync-core:settingsSync-core",
         "//plugins/settings-sync/jba:settingsSync",
         "//java/java-features-trainer:featuresTrainer",
@@ -388,7 +387,6 @@ jvm_library(
         "//plugins/markdown/plugin:plugin-main_test_lib",
         "//plugins/webp:webp_test_lib",
         "//plugins/emojipicker:emojipicker_test_lib",
-        "//plugins/gradle/gradle-dependency-updater:dependencyUpdater_test_lib",
         "//platform/settings-sync-core:settingsSync-core_test_lib",
         "//plugins/settings-sync/jba:settingsSync_test_lib",
         "//java/java-features-trainer:featuresTrainer_test_lib",
@@ -459,63 +457,6 @@ exports_files(
     visibility = ["//visibility:public"],
 )
 ### auto-generated section `iml intellij.idea.community.main` end
-
-### auto-generated section `build intellij.idea.community.main.android` start
-jvm_library(
-    name = "main-android",
-    srcs = glob(
-        [],
-        allow_empty = True,
-    ),
-    module_name = "intellij.idea.community.main.android",
-    visibility = ["//visibility:public"],
-    runtime_deps = [
-        # do not sort,
-        "//android/android:core",
-        "//:main",
-        "//android/android-plugin:plugin",
-        "//android/layoutlib",
-        "//plugins/kotlin:kotlin-plugin-community-main",
-        "//android/compose-designer",
-        "//android/compose-ide-plugin",
-        "//android/design-plugin",
-        "//android/android-navigator:navigator",
-    ],
-)
-
-jvm_library(
-    name = "main-android_test_lib",
-    testonly = True,
-    srcs = glob(
-        [],
-        allow_empty = True,
-    ),
-    module_name = "intellij.idea.community.main.android",
-    visibility = ["//visibility:public"],
-    runtime_deps = [
-        # do not sort,
-        ":main-android",
-        "//android/android:core_test_lib",
-        "//:main_test_lib",
-        "//android/android-plugin:plugin_test_lib",
-        "//android/layoutlib:layoutlib_test_lib",
-        "//plugins/kotlin:kotlin-plugin-community-main_test_lib",
-        "//android/compose-designer:compose-designer_test_lib",
-        "//android/compose-ide-plugin:compose-ide-plugin_test_lib",
-        "//android/design-plugin:design-plugin_test_lib",
-        "//android/android-navigator:navigator_test_lib",
-    ],
-)
-### auto-generated section `build intellij.idea.community.main.android` end
-
-### auto-generated section `iml intellij.idea.community.main.android` start
-exports_files(
-    [
-        "intellij.idea.community.main.android.iml",
-    ],
-    visibility = ["//visibility:public"],
-)
-### auto-generated section `iml intellij.idea.community.main.android` end
 
 ### auto-generated section `build intellij.idea.community.main.tests` start
 create_kotlinc_options(

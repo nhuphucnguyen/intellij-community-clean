@@ -25,8 +25,6 @@ val IDEA_BUNDLED_PLUGINS: PersistentList<String> = DEFAULT_BUNDLED_PLUGINS + per
   "intellij.html.tools",
   "intellij.maven.plugin",
   "intellij.gradle.plugin",
-  "intellij.android.gradle.declarative.lang.ide",
-  "intellij.android.gradle.dsl",
   "intellij.gradle.java.plugin",
   "intellij.vcs.git",
   "intellij.vcs.git.commit.modal",
