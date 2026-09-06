@@ -24,7 +24,6 @@ jvm_library(
     visibility = ["//visibility:public"],
     deps = [
         # do not sort,
-        "//android/gradle-dsl",
         "//plugins/gradle/java",
         "//java/java-psi-api:psi",
         "//java/java-psi-impl:psi-impl",
@@ -48,7 +47,6 @@ jvm_library(
     runtime_deps = [
         # do not sort,
         ":analysis",
-        "//android/gradle-dsl:gradle-dsl_test_lib",
         "//plugins/gradle/java:java_test_lib",
         "//java/java-psi-api:psi_test_lib",
         "//java/java-psi-impl:psi-impl_test_lib",

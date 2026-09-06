@@ -68,7 +68,6 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : JetBrai
     productLayout.pluginLayouts = CommunityRepositoryModules.COMMUNITY_REPOSITORY_PLUGINS + persistentListOf(
       JavaPluginLayout.javaPlugin(),
       CommunityRepositoryModules.groovyPlugin(),
-      *CommunityRepositoryModules.androidPlugin(),
     )
 
     productLayout.skipUnresolvedContentModules = true
@@ -157,32 +156,6 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : JetBrai
   override fun getBaseArtifactName(appInfo: ApplicationInfoProperties, buildNumber: String): String = "ideaIC-$buildNumber"
 
   override fun getOutputDirectoryName(appInfo: ApplicationInfoProperties): String = "idea-ce"
-}
-
-@Suppress("unused")
-open class AndroidStudioProperties(communityHomeDir: Path) : IdeaCommunityProperties(communityHomeDir) {
-  init {
-    platformPrefix = "AndroidStudio"
-    applicationInfoModule = "intellij.idea.android.customization"
-
-    productLayout.productImplementationModules += "intellij.idea.android.customization"
-
-    val defaultBundledPlugins = IDEA_BUNDLED_PLUGINS
-      .removing("intellij.mcpserver.plugin")
-      .removing("intellij.featuresTrainer")
-
-    productLayout.bundledPluginModules = defaultBundledPlugins + persistentListOf(
-      "intellij.android.compose-ide-plugin",
-      "intellij.android.design-plugin.descriptor",
-      "intellij.android.plugin.descriptor",
-      "intellij.android.smali",
-    )
-  }
-
-  override fun getProductContentDescriptor(): ProductModulesContentSpec = productModules {
-    include(intellijCommunityBaseFragment(platformPrefix))
-    // no community extensions
-  }
 }
 
 /**

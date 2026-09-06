@@ -128,7 +128,6 @@
     <orderEntry type="module" module-name="intellij.markdown.plugin.main" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.webp" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.emojipicker" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.gradle.dependencyUpdater" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.settingsSync.core" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.settingsSync" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.java.featuresTrainer" scope="RUNTIME" />
