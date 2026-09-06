@@ -328,7 +328,6 @@ java/java-impl-refactorings
 java/java-indexing-api
 java/java-indexing-impl
 java/java-indexing-serializers
-java/java-promo
 java/java-property-tests
 java/java-psi-api
 java/java-psi-impl
@@ -1226,7 +1225,6 @@ plugins/github/github-core
 plugins/github/github-git
 plugins/github/github-json
 plugins/github/github-tracker
-plugins/github/ultimate-promo
 plugins/gitlab/gitlab-core
 plugins/gitlab/gitlab-git
 plugins/gitlab/gitlab-yaml
@@ -1758,7 +1756,6 @@ python/ide-common/ide-customization
 python/ide/customization.backend
 python/ide/customization.shared
 python/ide/impl
-python/ide/impl/intellij.pycharm.community.ide.impl.promotion
 python/ide/implTraining/intellij.pycharm.community.ide.implTraining
 python/ide/newUiOnboarding
 python/impl.helperLocator

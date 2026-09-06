@@ -21,7 +21,6 @@ object MarketplaceUrls {
 
   const val FULL_PLUGINS_XML_IDS_FILENAME: String = "pluginsXMLIds.json"
   const val JB_PLUGINS_XML_IDS_FILENAME: String = "jbPluginsXMLIds.json"
-  const val EXTENSIONS_BACKUP_FILENAME: String = "pluginsFeatures.json"
 
   @JvmStatic
   fun getPluginManagerUrl(): String = MarketplaceCustomizationService.getInstance().getPluginManagerUrl().trimEnd('/')
@@ -40,10 +39,6 @@ object MarketplaceUrls {
   fun getPluginsXmlIdsUrl(): String = "${getPluginManagerUrl()}/files/$FULL_PLUGINS_XML_IDS_FILENAME"
 
   fun getBrokenPluginsJsonUrl(): String = "${getPluginManagerUrl()}/files/brokenPlugins.json"
-
-  fun getIdeExtensionsJsonUrl(): Url = Urls.newFromEncoded(
-    "${getPluginManagerUrl()}/files/IDE/extensions.json"
-  ).addParameters(mapOf("build" to IDE_BUILD_FOR_REQUEST))
 
   fun getFeatureImplUrl(param: Map<String, String>): Url = Urls.newFromEncoded(
     "${getPluginManagerUrl()}/feature/getImplementations"

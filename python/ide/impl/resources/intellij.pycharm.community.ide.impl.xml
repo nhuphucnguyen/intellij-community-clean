@@ -174,14 +174,10 @@
     <applicationService serviceImplementation="com.intellij.pycharm.community.ide.impl.newProjectWizard.welcome.PyWelcomeSettings"/>
     <statistics.counterUsagesCollector
       implementationClass="com.intellij.pycharm.community.ide.impl.newProjectWizard.welcome.PyWelcomeCollector"/>
-    <notificationGroup id="PyCharm Advertiser" displayType="STICKY_BALLOON" isLogByDefault="false"
-                       bundle="messages.PyCharmCommunityCustomizationBundle" key="notification.group.pro.advertiser"/>
 
     <ignoredFileProvider implementation="com.intellij.pycharm.community.ide.impl.configuration.PyTemporarilyIgnoredFileProvider"/>
 
     <codeInsight.codeVision.settings.defaults implementation="com.intellij.pycharm.community.ide.impl.PyCharmCodeVisionSettingsDefaults"/>
-    <startPagePromoter
-      implementation="com.intellij.pycharm.community.ide.impl.promo.WelcomeToUnifiedWelcomeScreenBanner"/>
     <applicationSettings service="com.intellij.pycharm.community.ide.impl.newProjectWizard.welcome.PyWelcomeSettings"/>
 
     <postStartupActivity implementation="com.intellij.pycharm.community.ide.impl.whatsnew.PyCharmJcefWhatsNewPatcher" order="first"/>
@@ -192,8 +188,6 @@
               topic="com.intellij.ide.AppLifecycleListener"/>
     <listener class="com.intellij.pycharm.community.ide.impl.welcomeScreen.PyWelcomeScreenFreeModeTracker"
               topic="com.intellij.ui.LicensingFacade$LicenseStateListener"/>
-    <listener class="com.intellij.pycharm.community.ide.impl.promo.CommunityToUnifiedListener"
-              topic="com.intellij.ide.AppLifecycleListener"/>
   </applicationListeners>
 
   <actions resource-bundle="messages.ActionsBundle">

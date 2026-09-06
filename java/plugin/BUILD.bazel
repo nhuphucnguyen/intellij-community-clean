@@ -116,7 +116,6 @@ dev_dist_plugin(
         "//java/java-indexing-api:indexing_content_module_jar",
         "//java/java-indexing-impl:indexing-impl_content_module_jar",
         "//java/java-indexing-serializers:indexing-serializers_content_module_jar",
-        "//java/java-promo:promo_content_module_jar",
         "//java/java-structure-view:structureView_content_module_jar",
         "//java/jsp-openapi:jsp_content_module_jar",
         "//java/jsp-spi:jsp-spi_content_module_jar",

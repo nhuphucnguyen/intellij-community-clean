@@ -115,7 +115,6 @@
     <module name="intellij.debugger.jvm.advanced.java.logpoints"/>
     <module name="intellij.debugger.logpoints.java"/>
     <module name="intellij.java.copyright"/>
-    <module name="intellij.java.promo"/>
   </content>
   <content>
     <module name="intellij.libraries.completion.ranking.java" loading="required"/>

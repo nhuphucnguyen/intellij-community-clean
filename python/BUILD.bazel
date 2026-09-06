@@ -94,7 +94,6 @@ jvm_library(
     runtime_deps = [
         # do not sort,
         "//python/ide/impl",
-        "//python/ide/impl/intellij.pycharm.community.ide.impl.promotion:pycharm-community-ide-impl-promotion",
         "//python/ide/implTraining/intellij.pycharm.community.ide.implTraining:pycharm-community-ide-implTraining",
         "//python/ide/customization.shared",
     ],
@@ -113,7 +112,6 @@ jvm_library(
         # do not sort,
         ":pycharm-community-customization",
         "//python/ide/impl:impl_test_lib",
-        "//python/ide/impl/intellij.pycharm.community.ide.impl.promotion:pycharm-community-ide-impl-promotion_test_lib",
         "//python/ide/implTraining/intellij.pycharm.community.ide.implTraining:pycharm-community-ide-implTraining_test_lib",
         "//python/ide/customization.shared:customization.shared_test_lib",
     ],

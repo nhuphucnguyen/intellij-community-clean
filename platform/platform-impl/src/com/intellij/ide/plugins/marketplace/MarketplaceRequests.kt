@@ -913,7 +913,6 @@ class MarketplaceRequests(private val coroutineScope: CoroutineScope) : PluginIn
 
       mutex.withLock {
         loadJetBrainsMarketplacePlugins()
-        loadExtensionsForIdes()
       }
     }
   }
@@ -951,71 +950,6 @@ class MarketplaceRequests(private val coroutineScope: CoroutineScope) : PluginIn
     return PathManager.getSystemDir()
       .resolve("plugins")
       .resolve(MarketplaceUrls.JB_PLUGINS_XML_IDS_FILENAME)
-  }
-
-  @Volatile
-  private var extensionsFromServer: Map<String, List<String>>? = null
-
-  @Volatile
-  private var extensionsFromBackup: Map<String, List<String>>? = null
-
-  val extensionsForIdes: Map<String, List<String>>?
-    get() {
-      if (extensionsFromServer != null) return extensionsFromServer
-      if (extensionsFromBackup != null) return extensionsFromBackup
-
-      try {
-        val extensionsBackupFile = getExtensionsBackupPath()
-        if (Files.exists(extensionsBackupFile)) {
-          extensionsFromBackup = objectMapper.readValue(extensionsBackupFile,
-                                                        object : TypeReference<Map<String, List<String>>>() {})
-        }
-      }
-      catch (e: Exception) {
-        LOG.infoOrDebug("Cannot read extensions from local cache file", e)
-        extensionsFromBackup = emptyMap()
-      }
-
-      schedulePluginIdsUpdate()
-      return extensionsFromBackup
-    }
-
-  private fun loadExtensionsForIdes() {
-    if (extensionsFromServer != null) return
-
-    try {
-      HttpRequests.request(MarketplaceUrls.getIdeExtensionsJsonUrl())
-        .productNameAsUserAgent()
-        .setHeadersViaTuner()
-        .throwStatusCodeException(false)
-        .connect {
-          val newExtensions = deserializeExtensionsForIdes(it.inputStream)
-
-          if (newExtensions != null) {
-            val extensionsBackupFile = getExtensionsBackupPath()
-            try {
-              objectMapper.writeValue(extensionsBackupFile, newExtensions)
-            }
-            catch (e: Exception) {
-              LOG.infoOrDebug("Cannot save supported extensions from Marketplace", e)
-            }
-          }
-        }
-    }
-    catch (e: Exception) {
-      LOG.infoOrDebug("Cannot get supported extensions from Marketplace", e)
-      extensionsFromServer = emptyMap()
-    }
-  }
-
-  private fun getExtensionsBackupPath(): Path {
-    return PathManager.getTempDir().resolve(MarketplaceUrls.EXTENSIONS_BACKUP_FILENAME)
-  }
-
-  @VisibleForTesting
-  fun deserializeExtensionsForIdes(stream: InputStream): Map<String, List<String>>? {
-    extensionsFromServer = objectMapper.readValue(stream, object : TypeReference<Map<String, List<String>>>() {})
-    return extensionsFromServer
   }
 
   private fun parseXmlIds(input: InputStream): Set<PluginId> {

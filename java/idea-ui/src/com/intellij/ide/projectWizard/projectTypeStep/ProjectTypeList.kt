@@ -329,11 +329,6 @@ internal class ProjectTypeList(
       mySeparatorComponent.setCaptionCentered(false)
       mySeparatorComponent.font = JBFont.label().deriveFont(JBUI.scale(12))
 
-      myNextStepLabel.icon = when (value.group.isPromo) {
-        true -> AllIcons.Ultimate.Lock
-        else -> null
-      }
-
       myTextLabel.border = JBUI.Borders.empty(5, 0)
     }
 

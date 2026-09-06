@@ -44,7 +44,6 @@ data class SeRunnableActionItemPresentation(
   val actionId: @Nls String? = null,
   val isEnabled: Boolean = true,
   val shortcut: @NlsSafe String? = null,
-  val promo: Promo? = null,
   val iconId: IconId? = null,
   val selectedIconId: IconId? = null,
   override val isMultiSelectionSupported: Boolean,
@@ -53,13 +52,6 @@ data class SeRunnableActionItemPresentation(
   override val extendedInfo: SeExtendedInfo? get() = commonData.extendedInfo
   override val uiInspectorInfo: SeUiInspectorInfo? get() = commonData.uiInspectorInfo
 
-  @ApiStatus.Internal
-  @Serializable
-  data class Promo(
-    val productIconId: IconId?,
-    val callToActionText: @Nls String,
-  )
-
   override fun contentEquals(other: SeItemPresentation?): Boolean {
     if (this === other) return true
     if (other !is SeRunnableActionItemPresentation) return false
@@ -67,8 +59,7 @@ data class SeRunnableActionItemPresentation(
     return super.contentEquals(other) &&
            toolTip == other.toolTip &&
            actionId == other.actionId &&
-           shortcut == other.shortcut &&
-           promo == other.promo
+           shortcut == other.shortcut
   }
 }
 

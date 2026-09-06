@@ -63,7 +63,6 @@ import java.util.function.Consumer;
 import static com.jetbrains.python.configuration.SdkConfigurationProgressObserverKt.observeSdkConfigurationInProgress;
 import static com.jetbrains.python.sdk.ModuleExKt.setPythonSdk;
 import static com.jetbrains.python.sdk.PySdkRenderingKt.groupInterpreterItemsByTypesUnderProgress;
-import static com.jetbrains.python.sdk.legacy.PythonSdkUtil.isRemote;
 
 @ApiStatus.Internal
 public class PyActiveSdkConfigurable implements UnnamedConfigurable {
@@ -79,7 +78,6 @@ public class PyActiveSdkConfigurable implements UnnamedConfigurable {
   private final @NotNull DropDownLink<?> myAddInterpreterLink;
 
   private final @NotNull PyInstalledPackagesPanel myPackagesPanel;
-  private final @Nullable PyPanelWithPromo myPanelWithPromo;
 
   private final @Nullable Disposable myDisposable;
 
@@ -100,8 +98,6 @@ public class PyActiveSdkConfigurable implements UnnamedConfigurable {
     final PackagesNotificationPanel packagesNotificationPanel = new PyPackagesNotificationPanel();
     myPackagesPanel = new PyInstalledPackagesPanel(myProject, packagesNotificationPanel);
     myPackagesPanel.setShowGrid(false);
-    boolean freeTier = PythonSdkUtil.isFreeTier();
-    myPanelWithPromo = freeTier ? new PyPanelWithPromo(myPackagesPanel) : null;
 
     final PyCustomSdkUiProvider customUiProvider = PyCustomSdkUiProvider.getInstance();
     myDisposable = customUiProvider == null ? null : Disposer.newDisposable();
@@ -110,7 +106,7 @@ public class PyActiveSdkConfigurable implements UnnamedConfigurable {
 
     myAddInterpreterLink = getAddInterpreterDropDownLink(project, module);
     myMainPanel =
-      buildPanel(project, mySdkCombo, myAddInterpreterLink, freeTier ? myPanelWithPromo.getPanel() : myPackagesPanel,
+      buildPanel(project, mySdkCombo, myAddInterpreterLink, myPackagesPanel,
                  packagesNotificationPanel,
                  customizer);
 
@@ -160,18 +156,6 @@ public class PyActiveSdkConfigurable implements UnnamedConfigurable {
 
   private void onSdkSelected() {
     final Sdk sdk = getOriginalSelectedSdk();
-
-    if (sdk != null) {
-      // Non-null means we are in free tier mode, so must switch between packages and promo panel
-      if (myPanelWithPromo != null) {
-        boolean remote = isRemote(sdk);
-        myPanelWithPromo.setPromoMode(remote);
-        if (remote) {
-          return;
-        }
-      }
-    }
-
     refreshPackages(sdk);
   }
 

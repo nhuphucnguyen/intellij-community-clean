@@ -384,7 +384,6 @@ intellij.java.plugin	descriptor	META-INF/RegistryKeysRefactorings.xml	community/
 intellij.java.plugin	descriptor	META-INF/RegistryKeysStructureView.xml	community/java/java-structure-view/resources/META-INF/RegistryKeysStructureView.xml
 intellij.java.plugin	descriptor	META-INF/TypeMigration.xml	community/java/typeMigration/resources/META-INF/TypeMigration.xml
 intellij.java.plugin	descriptor	META-INF/UsageData.xml	community/java/java-impl/resources/META-INF/UsageData.xml
-intellij.java.plugin	descriptor	META-INF/community-integration.xml	community/java/java-promo/resources/META-INF/community-integration.xml
 intellij.java.plugin	descriptor	META-INF/java-debugger.xml	community/java/debugger/impl/resources/META-INF/java-debugger.xml
 intellij.java.plugin	descriptor	intellij.java.analysis.impl.analyzer.xml	community/java/java-analysis-impl/resources/intellij.java.analysis.impl.analyzer.xml
 intellij.java.plugin	descriptor	intellij.java.debugger.content.xml	community/java/debugger/openapi/resources/intellij.java.debugger.content.xml

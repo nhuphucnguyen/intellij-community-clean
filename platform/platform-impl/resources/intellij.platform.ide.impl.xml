@@ -394,7 +394,6 @@
     <extensionPoint qualifiedName="com.intellij.pluginCategoryPromotionProvider"
                     interface="com.intellij.ide.plugins.PluginCategoryPromotionProvider"
                     dynamic="false"/>
-    <extensionPoint qualifiedName="com.intellij.openAnotherToolHandler" interface="com.intellij.openapi.updateSettings.impl.pluginsAdvertisement.OpenAnotherToolHandler" dynamic="true"/>
     <extensionPoint dynamic="true" qualifiedName="com.intellij.editorTabsConfigurable" beanClass="com.intellij.application.options.editor.EditorTabsConfigurableEP">
       <with attribute="instance" implements="com.intellij.openapi.options.UnnamedConfigurable" />
     </extensionPoint>
@@ -1401,8 +1400,6 @@
                        key="notification.group.browser.config.problems"/>
     <notificationGroup id="Failed to generate module descriptors" displayType="BALLOON" bundle="messages.IdeBundle"
                        key="notification.group.failed.to.generate.module.descriptors"/>
-    <notificationGroup id="Ultimate Installed" displayType="BALLOON" bundle="messages.IdeBundle"
-                       key="notification.group.advertiser.try.ultimate.installed"/>
     <notificationGroup id="proxy.auth.failed" displayType="STICKY_BALLOON" bundle="messages.UIBundle" key="proxy.auth.notification.title"/>
     <backgroundPostStartupActivity implementation="com.intellij.accessibility.AccessibilityUsageTrackerCollector$CollectStatisticsTask"/>
     <backgroundPostStartupActivity implementation="com.intellij.ide.plugins.LanguagePluginDetectionStartupActivity"/>
@@ -1621,7 +1618,6 @@
     <applicationService serviceImplementation="com.intellij.ide.impl.UndoRemoteBehaviorService" open="true"/>
     <diagnostic.specialPathsProvider implementation="com.intellij.diagnostic.specialPaths.ProjectSpecialPathsProvider"/>
     <diagnostic.specialPathsProvider implementation="com.intellij.diagnostic.specialPaths.ApplicationSpecialPathsProvider"/>
-    <openAnotherToolHandler implementation="com.intellij.openapi.updateSettings.impl.upgradeToUltimate.installation.install.TryUltimateActionHandler"/>
     <aboutPopupDescriptionProvider implementation="com.intellij.diagnostic.ReporterIdForEAAutoReporters"/>
     <backgroundPostStartupActivity implementation="com.intellij.diagnostic.ReporterIdLoggerActivity"/>
     <remote.customDataContextSerializer implementation="com.intellij.openapi.editor.impl.HonorCamelWordsDataContextSerializer"/>
