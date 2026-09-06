@@ -12,7 +12,6 @@
     <module name="intellij.sh.copyright"/>
     <module name="intellij.sh.markdown"/>
     <module name="intellij.sh.markdown.frontend.split"/>
-    <module name="intellij.sh.python"/>
   </content>
 
   <dependencies>

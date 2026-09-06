@@ -57,7 +57,6 @@
     </content>
     <content>
       <module name="intellij.dotenv.java"/>
-      <module name="intellij.dotenv.python"/>
     </content>
 
     <xi:include href="/META-INF/dotenv-ultimate.xml">
