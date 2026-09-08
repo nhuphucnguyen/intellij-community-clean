@@ -68,37 +68,6 @@ class IntellijIconClassGeneratorConfig : IconClasses() {
         className = "SpringApiIcons",
         packageName = "com.intellij.spring",
       )
-
-      "intellij.python.parser" -> IntellijIconClassGeneratorModuleConfig(
-        className = "PythonParserIcons",
-        packageName = "com.jetbrains.python.parser.icons",
-        iconDirectory = "icons/com/jetbrains/python/parser",
-      )
-
-      "intellij.python.psi" -> IntellijIconClassGeneratorModuleConfig(
-        className = "PythonPsiApiIcons",
-        packageName = "com.jetbrains.python.psi.icons",
-        iconDirectory = "icons/com/jetbrains/python/psi",
-      )
-
-      "intellij.python" -> IntellijIconClassGeneratorModuleConfig(
-        className = "PythonUltimateIcons",
-        packageName = "com.intellij.python.pro.icons",
-        iconDirectory = "icons/com/intellij/python/pro",
-      )
-
-      "intellij.python.community.impl" -> IntellijIconClassGeneratorModuleConfig(
-        className = "PythonIcons",
-        packageName = "com.jetbrains.python.icons",
-        iconDirectory = "icons/com/jetbrains/pythonCore",
-      )
-
-      "intellij.notebooks.jupyter.core" -> IntellijIconClassGeneratorModuleConfig(
-        className = "JupyterCoreIcons",
-        packageName = "com.intellij.notebooks.jupyter.core.icons",
-        iconDirectory = "icons/org.jetbrains.plugins.notebooks.jupyter",
-      )
-
       "intellij.spring.mvc.core" -> IntellijIconClassGeneratorModuleConfig(
         className = "SpringMvcApiIcons",
         packageName = "com.intellij.spring.mvc",

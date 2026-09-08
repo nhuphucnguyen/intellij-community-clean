@@ -1,1 +1,0 @@
-unresolved("foo{divmo<caret>")

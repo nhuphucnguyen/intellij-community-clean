@@ -1,5 +1,0 @@
-def foo():
-    print(1)
-    # this is a comment
-    print(2)
-    return

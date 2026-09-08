@@ -1,5 +1,0 @@
-class MyClass:
-    def outer(self):
-        def inner():
-            pass
-        return inner()

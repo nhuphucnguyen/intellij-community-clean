@@ -1,3 +1,0 @@
-# Stub missing OK, not part of public API
-geojson.factory
-geojson.examples

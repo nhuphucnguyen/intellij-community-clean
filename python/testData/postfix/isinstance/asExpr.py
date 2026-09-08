@@ -1,1 +1,0 @@
-foo = "something".isinstance<caret>

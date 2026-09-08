@@ -1,2 +1,0 @@
-[project]
-dependencies = ["django==4.2.0"/*<# ✓ 4.2.7 #>*/, "requests"/*<# ✓ 2.31.0 #>*/]

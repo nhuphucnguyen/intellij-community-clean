@@ -1,5 +1,0 @@
-def outer():
-    def inner():
-        print(1)
-        print(3)
-    return inner

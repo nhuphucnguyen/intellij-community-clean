@@ -317,8 +317,6 @@ object CommunityLibraryLicenses {
     LibraryLicense("coverage-report", libraryName = "coverage-report", url = "https://github.com/JetBrains/coverage-report")
       .apache("https://github.com/JetBrains/coverage-report/blob/master/LICENSE"),
 
-    LibraryLicense("coverage.py", version = "4.2.0", attachedTo = "intellij.python", url = "https://coverage.readthedocs.io/")
-      .apache("https://github.com/nedbat/coveragepy/blob/master/LICENSE.txt"),
 
     LibraryLicense("cucumber-core", libraryName = "cucumber-core-1", url = "https://github.com/cucumber/cucumber-jvm/blob/main/LICENSE")
       .mit("https://github.com/cucumber/cucumber-jvm/blob/main/LICENSE")
@@ -340,11 +338,7 @@ object CommunityLibraryLicenses {
       .mit("https://github.com/hypfvieh/dbus-java/blob/dbus-java-parent-4.2.1/LICENSE")
       .suppliedByPersons("David M. <hypfvieh@googlemail.com>"),
 
-    LibraryLicense("debugpy", version = LibraryLicense.CUSTOM_REVISION, attachedTo="intellij.python", url = "https://github.com/microsoft/debugpy")
-      .mit("https://github.com/microsoft/debugpy/blob/main/LICENSE"),
 
-    LibraryLicense("docutils", version = "0.12", attachedTo = "intellij.python", url = "https://docutils.sourceforge.io/")
-      .public("https://sourceforge.net/p/docutils/code/HEAD/tree/trunk/docutils/COPYING.rst"),
 
     LibraryLicense("dotenv-kotlin", libraryName = "io.github.cdimascio.dotenv.kotlin", url = "https://github.com/cdimascio/dotenv-kotlin")
       .apache("https://github.com/cdimascio/dotenv-kotlin/blob/master/LICENSE"),
@@ -398,8 +392,6 @@ object CommunityLibraryLicenses {
     LibraryLicense("entities", version = LibraryLicense.CUSTOM_REVISION, attachedTo = "intellij.vuejs.plugin", url = "https://github.com/fb55/entities")
       .simplifiedBsd("https://github.com/fb55/entities/blob/master/LICENSE"),
 
-    LibraryLicense("epydoc", version = "3.0.1", attachedTo = "intellij.python", url = "https://epydoc.sourceforge.net/")
-      .mit("https://epydoc.sourceforge.net/license.html"),
 
     LibraryLicense("fastutil", libraryName = "fastutil-min", url = "https://github.com/vigna/fastutil")
       .apache("https://github.com/vigna/fastutil/blob/master/LICENSE-2.0")
@@ -1033,8 +1025,6 @@ object CommunityLibraryLicenses {
     LibraryLicense("lz4-java", libraryName = "lz4-java", url = "https://github.com/lz4/lz4-java")
       .apache("https://github.com/lz4/lz4-java/blob/master/LICENSE.txt"),
 
-    LibraryLicense("MathJax", version = "2.6.1", attachedTo = "intellij.python", url = "https://github.com/mathjax/MathJax")
-      .apache("https://github.com/mathjax/MathJax/blob/master/LICENSE"),
 
     LibraryLicense("Maven archetype catalog", libraryName = "apache.maven.archetype.catalog-no-trans:321", url = "https://maven.apache.org/archetype/archetype-common/index.html")
       .apache("https://github.com/apache/maven-archetype"),
@@ -1122,8 +1112,6 @@ object CommunityLibraryLicenses {
       .license("zlib/libpng", "https://github.com/saulhidalgoaular/nanoxml/raw/master/LICENSE.txt")
       .suppliedByPersons("Marc De Scheemaecker", "Saul Hidalgo"),
 
-    LibraryLicense("nest_asyncio", version = LibraryLicense.CUSTOM_REVISION, attachedTo = "intellij.python.community.impl", url = "https://github.com/erdewit/nest_asyncio")
-      .simplifiedBsd("https://github.com/erdewit/nest_asyncio/blob/master/LICENSE"),
 
     LibraryLicense("net.loomchild.segment", libraryName = "net.loomchild:segment:2.0.1", url = "https://github.com/loomchild/segment")
       .mit("https://github.com/loomchild/segment/blob/master/LICENSE.txt")
@@ -1201,8 +1189,6 @@ object CommunityLibraryLicenses {
       .apache("https://github.com/JetBrains/package-search-api-models/blob/master/LICENSE")
       .suppliedByOrganizations("JetBrains Team"),
 
-    LibraryLicense("pip", version = "24.3.1", attachedTo = "intellij.python", url = "https://pip.pypa.io/")
-      .mit("https://github.com/pypa/pip/blob/main/LICENSE.txt"),
 
     LibraryLicense("plexus-archiver", libraryName = "plexus-archiver", url = "https://github.com/codehaus-plexus/plexus-archiver")
       .apache("https://github.com/codehaus-plexus/plexus-archiver/blob/master/LICENSE")
@@ -1212,14 +1198,10 @@ object CommunityLibraryLicenses {
       .apache("https://github.com/codehaus-plexus/plexus-utils/blob/master/LICENSE.txt")
       .suppliedByOrganizations("The Codehaus Foundation, Inc."),
 
-    LibraryLicense("PLY", version = "3.7", attachedTo = "intellij.python", url = "https://www.dabeaz.com/ply/")
-      .newBsd("https://github.com/dabeaz/ply/blob/master/src/ply/lex.py"),
 
     LibraryLicense(libraryName = "pngencoder", url = "https://github.com/pngencoder/pngencoder")
       .mit("https://github.com/pngencoder/pngencoder/blob/develop/LICENSE"),
 
-    LibraryLicense("pockets", version = "0.9.1", attachedTo = "intellij.python", url = "https://pockets.readthedocs.io/")
-      .newBsd("https://github.com/RobRuana/pockets/blob/master/LICENSE"),
 
     LibraryLicense("protobuf-java-util", libraryName = "google.protobuf.java.util", url = "https://developers.google.com/protocol-buffers")
       .newBsd("https://github.com/protocolbuffers/protobuf/blob/main/LICENSE")
@@ -1238,11 +1220,7 @@ object CommunityLibraryLicenses {
     LibraryLicense("pty4j", libraryName = "pty4j", url = "https://github.com/JetBrains/pty4j")
       .eplV1("https://github.com/JetBrains/pty4j/blob/master/LICENSE"),
 
-    LibraryLicense("pycodestyle", version = "2.8.0", attachedTo = "intellij.python", url = "https://pycodestyle.pycqa.org/")
-      .mit("https://github.com/PyCQA/pycodestyle/blob/main/LICENSE"),
 
-    LibraryLicense("pyparsing", version = "1.5.6", attachedTo = "intellij.python", url = "https://github.com/pyparsing/pyparsing/")
-      .mit("https://github.com/pyparsing/pyparsing/blob/master/LICENSE"),
 
     LibraryLicense("qdox-java-parser", libraryName = "qdox-java-parser", url = "https://github.com/paul-hammant/qdox")
       .apache("https://github.com/paul-hammant/qdox/blob/master/LICENSE.txt"),
@@ -1276,8 +1254,6 @@ object CommunityLibraryLicenses {
     LibraryLicense("Roboto", version = "1.100141", attachedTo = "intellij.platform.resources", url = "https://github.com/googlefonts/roboto")
       .apache("https://github.com/google/roboto/blob/master/LICENSE"),
 
-    LibraryLicense("roman", version = "1.4.0", attachedTo = "intellij.python", url = "https://docutils.sourceforge.io/docutils/utils/roman.py")
-      .license("Python 2.1.1 license", "https://www.python.org/download/releases/2.1.1/license/"),
 
     LibraryLicense(libraryName = "sa-jdwp", url = "https://github.com/JetBrains/jdk-sa-jdwp")
       .gpl2ce("https://github.com/JetBrains/jdk-sa-jdwp/raw/master/LICENSE.txt"),
@@ -1288,11 +1264,7 @@ object CommunityLibraryLicenses {
                      "io.github.smiley4.schema.kenerator.serialization",))
       .apache("https://github.com/SMILEY4/schema-kenerator/blob/develop/LICENSE"),
 
-    LibraryLicense("setuptools", version = "44.1.1", attachedTo = "intellij.python", url = "https://setuptools.pypa.io/")
-      .mit("https://github.com/pypa/setuptools/blob/main/LICENSE"),
 
-    LibraryLicense("six.py", version = "1.9.0", attachedTo = "intellij.python", url = "https://six.readthedocs.io/")
-      .mit("https://github.com/benjaminp/six/blob/master/LICENSE"),
 
     LibraryLicense("Skiko", libraryName = "jetbrains.skiko.awt.compose", url = "https://github.com/JetBrains/skiko/")
       .apache("https://github.com/JetBrains/skiko/blob/master/LICENSE"),
@@ -1329,8 +1301,6 @@ object CommunityLibraryLicenses {
     LibraryLicense("SourceCodePro", version = "2.010", attachedTo = "intellij.platform.resources", url = "https://github.com/adobe-fonts/source-code-pro")
       .license("OFL", "https://github.com/adobe-fonts/source-code-pro/blob/master/LICENSE.md"),
 
-    LibraryLicense("sphinxcontrib-napoleon", version = "0.7", attachedTo = "intellij.python", url = "https://sphinxcontrib-napoleon.readthedocs.io/")
-      .simplifiedBsd("https://github.com/sphinx-contrib/napoleon/blob/master/LICENSE"),
 
     LibraryLicense("Squareup Okio", libraryName = "squareup.okio.jvm", url = "https://github.com/square/okio")
       .apache("https://github.com/square/okio/blob/master/LICENSE.txt")
@@ -1382,8 +1352,6 @@ object CommunityLibraryLicenses {
     LibraryLicense("Thrift", libraryName = "libthrift", url = "https://thrift.apache.org/")
       .apache("https://github.com/apache/thrift/blob/master/LICENSE"),
 
-    LibraryLicense("thriftpy2", version = "0.4.13", attachedTo = "intellij.python", url = "https://github.com/Thriftpy/thriftpy2/")
-      .mit("https://github.com/Thriftpy/thriftpy2/blob/master/LICENSE"),
 
     // for traceprocessor-proto module library in intellij.android.profilersAndroid
     LibraryLicense("Trang", libraryName = "trang-core.jar", version = LibraryLicense.CUSTOM_REVISION, url = "https://relaxng.org/jclark/trang.html")
@@ -1397,8 +1365,6 @@ object CommunityLibraryLicenses {
         artifactId = "trove4j"
       ),
 
-    LibraryLicense("Typeshed", version = LibraryLicense.CUSTOM_REVISION, attachedTo = "intellij.python", url = "https://github.com/python/typeshed")
-      .apache("https://github.com/python/typeshed/blob/master/LICENSE"),
 
     LibraryLicense("unit-api", libraryName = "javax.measure:unit-api:1.0", url = "https://github.com/unitsofmeasurement/unit-api")
       .newBsd("https://github.com/unitsofmeasurement/unit-api/blob/master/LICENSE")
@@ -1425,8 +1391,6 @@ object CommunityLibraryLicenses {
     LibraryLicense("Vim Script language support for Atom", version = "1.2.1", attachedTo = "intellij.textmate", url = "https://github.com/AlexPl292/language-viml")
       .mit("https://github.com/AlexPl292/language-viml/blob/master/LICENSE.txt"),
 
-    LibraryLicense("virtualenv", version = "20.13.0", attachedTo = "intellij.python", url = "https://virtualenv.pypa.io/")
-      .mit("https://github.com/pypa/virtualenv/blob/main/LICENSE"),
 
     LibraryLicense("Visual Studio Code", version = "1.90.0", attachedTo = "intellij.textmate", url = "https://github.com/Microsoft/vscode/")
       .mit("https://github.com/Microsoft/vscode-react-native/blob/master/LICENSE.txt"),

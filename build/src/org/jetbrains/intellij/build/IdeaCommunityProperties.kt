@@ -198,10 +198,6 @@ fun intellijCommunityBaseFragment(platformPrefix: String? = null): ProductModule
     module("intellij.idea.customization.backend")
   }
 
-  if (System.getProperty("idea.platform.prefix") == "AndroidStudio") {
-    module("intellij.idea.android.customization")
-  }
-
   moduleSet(CommunityModuleSets.ideCommon())
   moduleSet(CommunityModuleSets.rdCommon())
 

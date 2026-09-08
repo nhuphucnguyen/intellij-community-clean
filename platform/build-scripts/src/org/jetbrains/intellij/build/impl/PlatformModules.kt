@@ -422,8 +422,6 @@ private fun buildImplicitTraversalRoots(
     .filter {
       !productLayout.excludedModuleNames.contains(it) &&
       !productPluginContentModules.contains(it) &&
-      !it.startsWith("intellij.pycharm.") &&
-      !it.startsWith("intellij.python.") &&
       !it.startsWith("intellij.codeServer.") &&
       !it.startsWith("intellij.clion.") &&
       !it.startsWith("intellij.cidr.") &&
@@ -450,12 +448,6 @@ private fun buildImplicitTraversalBlockedSet(
   blockedOrSeen.addAll(productPluginContentModules)
   blockedOrSeen.addAll(productLayout.excludedModuleNames)
   blockedOrSeen.add("fleet.backend")
-  // Module intellij.featuresTrainer contains, so it is a plugin, but plugin must be not included in a platform
-  // (chain: [intellij.pycharm.community, intellij.python.featuresTrainer])
-  blockedOrSeen.add("intellij.pycharm.community")
-  blockedOrSeen.add("intellij.python.featuresTrainer")
-  blockedOrSeen.add("intellij.pycharm.ds")
-  blockedOrSeen.add("intellij.notebooks.visualization")
   return blockedOrSeen
 }
 

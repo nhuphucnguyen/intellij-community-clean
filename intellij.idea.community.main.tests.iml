@@ -197,7 +197,6 @@
     <orderEntry type="module" module-name="intellij.maven.proofreading.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.maven.server.eventListener.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.maven.testFramework.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.notebooks.visualization.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.performanceTesting.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.performanceTesting.ui.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.backend.observation.tests" scope="TEST" />

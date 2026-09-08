@@ -1,5 +1,0 @@
-def foo():
-    first = 100
-    second = 2
-    third = 3
-    return first + second + third

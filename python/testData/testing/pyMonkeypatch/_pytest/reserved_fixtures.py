@@ -1,3 +1,0 @@
-@fixture
-def monkeypatch():
-    pass

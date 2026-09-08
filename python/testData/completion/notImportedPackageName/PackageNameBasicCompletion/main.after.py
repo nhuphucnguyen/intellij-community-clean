@@ -1,3 +1,0 @@
-import foobar
-
-foobar

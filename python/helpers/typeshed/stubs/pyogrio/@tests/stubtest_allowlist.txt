@@ -1,2 +1,0 @@
-pyogrio\.tests(\..*)?
-pyogrio\._typing  # stubs only module

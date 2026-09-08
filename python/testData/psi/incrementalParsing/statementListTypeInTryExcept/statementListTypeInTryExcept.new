@@ -1,6 +1,0 @@
-try:
-  print("Hello")
-  print(", ")
-  print("World")
-except:
-  print("World!")

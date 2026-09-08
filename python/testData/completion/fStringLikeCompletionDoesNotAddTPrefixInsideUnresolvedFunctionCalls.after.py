@@ -1,1 +1,0 @@
-unresolved(f"foo{divmod(<caret>)}")

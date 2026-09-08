@@ -1,3 +1,0 @@
-version = "0.4.*"
-upstream-repository = "https://github.com/click-contrib/click-log"
-dependencies = ["click>=8.0.0"]

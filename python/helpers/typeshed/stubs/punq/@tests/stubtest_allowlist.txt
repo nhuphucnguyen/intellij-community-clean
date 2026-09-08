@@ -1,2 +1,0 @@
-punq._Empty.__init__
-punq._Registration.__class_getitem__

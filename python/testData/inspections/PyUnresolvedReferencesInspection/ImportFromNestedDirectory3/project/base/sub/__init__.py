@@ -1,2 +1,0 @@
-class BaseSub:
-    pass

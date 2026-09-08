@@ -1,9 +1,0 @@
-Example function.
-
-```py
-def f():
-    x = 1
-    print(x)
-```
-
-Back to normal text.

@@ -1,8 +1,0 @@
-pluginManagement {
-  repositories {
-    maven {
-      url = uri('https://cache-redirector.jetbrains.com/packages.jetbrains.team/maven/p/py/public-maven')
-    }
-    gradlePluginPortal()
-  }
-}

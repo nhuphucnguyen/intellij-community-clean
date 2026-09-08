@@ -1,2 +1,0 @@
-# Part of internal API which is not needed for public type stubs:
-resampy.interpn

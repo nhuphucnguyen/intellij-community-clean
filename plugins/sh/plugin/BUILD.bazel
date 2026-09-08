@@ -75,7 +75,6 @@ jvm_library(
         "//plugins/sh/terminal",
         "//plugins/sh/copyright",
         "//plugins/sh/markdown",
-        "//plugins/sh/python",
     ],
 )
 
@@ -97,7 +96,6 @@ jvm_library(
         "//plugins/sh/terminal:terminal_test_lib",
         "//plugins/sh/copyright:copyright_test_lib",
         "//plugins/sh/markdown:markdown_test_lib",
-        "//plugins/sh/python:python_test_lib",
     ],
 )
 ### auto-generated section `build intellij.sh.plugin.main` end
