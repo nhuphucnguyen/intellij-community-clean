@@ -1,8 +1,17 @@
 <!-- TEMPLATE:COMMENT -->
 To regenerate, run `bazel run //.ai:render-guides`.
+This fork has no such Bazel target. Edit this template and the rendered AGENTS.md together.
 <!-- /TEMPLATE:COMMENT -->
 
 **Critical:** These guidelines MUST be followed at all times.
+
+## Fork Goal
+
+This repository is a fork of IntelliJ IDEA Community. The goal is a Java-only IDE. The fork removed the Android and Python support. It also removed the paid-edition upsell.
+
+- Keep the product focused on Java.
+- Do not restore Android or Python modules, plugins, or build targets.
+- Do not restore the paid-edition upsell.
 
 ## Project Invariants
 

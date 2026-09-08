@@ -1,11 +1,19 @@
-[![official JetBrains project](http://jb.gg/badges/official.svg)](https://github.com/JetBrains/.github/blob/main/profile/README.md) [![IntelliJ IDEA build status](https://github.com/JetBrains/intellij-community/actions/workflows/IntelliJ_IDEA.yml/badge.svg?branch=master)](https://github.com/JetBrains/intellij-community/actions/workflows/IntelliJ_IDEA.yml?query=branch%3Amaster) [![PyCharm build status](https://github.com/JetBrains/intellij-community/actions/workflows/PyCharm.yml/badge.svg?branch=master)](https://github.com/JetBrains/intellij-community/actions/workflows/PyCharm.yml?query=branch%3Amaster)
+[![official JetBrains project](http://jb.gg/badges/official.svg)](https://github.com/JetBrains/.github/blob/main/profile/README.md) [![IntelliJ IDEA build status](https://github.com/JetBrains/intellij-community/actions/workflows/IntelliJ_IDEA.yml/badge.svg?branch=master)](https://github.com/JetBrains/intellij-community/actions/workflows/IntelliJ_IDEA.yml?query=branch%3Amaster)
 
 # IntelliJ Open Source Repository
 
-This repository is the open-source part of the JetBrains IDEs codebase.
+This repository is a fork of the open-source part of the JetBrains IDEs codebase.
 It also serves as the basis for [IntelliJ Platform development](https://www.jetbrains.com/opensource/idea). 
 
-These instructions will help you build and run open source parts of IntelliJ Platform / IntelliJ IDEA / PyCharm.
+## Fork Goal
+
+The goal of this fork is a Java-only IDE.
+
+- The fork removes the Android support and the Python support from IntelliJ IDEA Community.
+- The fork removes the paid-edition upsell.
+- Do not add Android or Python modules, plugins, or build targets back.
+
+These instructions will help you build and run this Java-only IDE.
 
 If you are new to the community and would like to contribute code or help others learn,
 see [CONTRIBUTING.md](https://github.com/JetBrains/intellij-community/blob/master/CONTRIBUTING.md) to get started.
@@ -33,7 +41,7 @@ This section will guide you through getting the project sources and help avoid c
 
 IntelliJ open source repository is available from the [GitHub repository](https://github.com/JetBrains/intellij-community),
 which can be cloned or downloaded as a zip file (based on a branch) into `<IDEA_HOME>`. 
-The **master** (_default_) branch contains the source code which will be used to create the next major version of all JetBrains IDEs. 
+The **master** (_default_) branch contains the source code of this fork.
 The branch names and build numbers for older releases of JetBrains IDEs can be found on the
 [Build Number Ranges](https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html) page.
 
@@ -51,18 +59,6 @@ Alternatively, run the following commands in the terminal:
 > create [shallow clone](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthdepth).
 > To download only the latest revision of the repository,  add `--depth 1` option after `clone`.
 > - Cloning in IntelliJ IDEA also supports creating shallow clone.
-
-### Get Android Modules
-
-IntelliJ IDEA requires additional Android modules from separate Git repositories.
-Run the following script from project root `<IDEA_HOME>` to get the required modules:
-- Unix: `./getPlugins.sh`
-- Windows: `getPlugins.bat`
-
-> [!IMPORTANT]
->
->  Always `git checkout` the `intellij-community` and `android` Git repositories to the same branches/tags.
-
 
 ---
 ## Building IntelliJ IDEA
